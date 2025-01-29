@@ -23,7 +23,8 @@ add_library(${PROJECT_NAME} SHARED
   src/calibration_action_server.cpp
 )
 
-target_include_directories(${PROJECT_NAME} PRIVATE
+target_include_directories(
+  ${PROJECT_NAME} PUBLIC
   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
@@ -37,11 +38,13 @@ ament_target_dependencies(${PROJECT_NAME}
 )
 
 rclcpp_components_register_node(${PROJECT_NAME} PLUGIN "calibration::CalibrationActionServer" EXECUTABLE calibration_action_server)
+
 install(TARGETS
   ${PROJECT_NAME}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
-  RUNTIME DESTINATION bin)
+  RUNTIME DESTINATION bin
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
