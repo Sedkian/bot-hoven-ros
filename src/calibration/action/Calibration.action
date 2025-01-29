@@ -1,0 +1,8 @@
+# Request (Goal)
+string command  # Accepts "start", "pause", "terminate"
+---
+# Result
+string result
+---
+# Feedback
+string status
